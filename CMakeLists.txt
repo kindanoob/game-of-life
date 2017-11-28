@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(foompello)
+project(game_of_life)
 
 file(GLOB_RECURSE SOURCES src/*.cpp include/*.h)
 file(GLOB_RECURSE RESOURCES resources/fonts/*)
 
-set(EXECUTABLE_NAME "foompello")
+set(EXECUTABLE_NAME "game_of_life")
 add_executable(${EXECUTABLE_NAME} ${SOURCES} ${RESOURCES})
 
 target_compile_options(${EXECUTABLE_NAME} PUBLIC -std=c++11 -Wall -g -O3)
