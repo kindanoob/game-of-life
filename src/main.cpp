@@ -12,9 +12,9 @@ int main() {
     window.setVerticalSyncEnabled(true);
     window.setKeyRepeatEnabled(false);
 
-    GameMap *game_map = new GameMap(kMapWidthInTiles, kMapHeightInTiles,
+    std::unique_ptr<GameMap> game_map(new GameMap(kMapWidthInTiles, kMapHeightInTiles,
                                       kMapFillPercentage, kTileWidthInPixels,
-                                      kTileHeightInPixels, window);
+                                      kTileHeightInPixels, window));
 
     sf::Font font;
     if (!font.loadFromFile("resources/fonts/ubuntu.ttf")) {
@@ -41,7 +41,8 @@ int main() {
 
     
 
-    Button *generate_button = new Button(kButtonSize,
+    std::unique_ptr<Button> generate_button(
+                                         new Button(kButtonSize,
                                          kGenerateButtonPosition,
                                          kButtonColor,
                                          kButtonOutlineThickness,
@@ -49,9 +50,11 @@ int main() {
                                          font,
                                          kGenerateButtonString,
                                          kButtonCharacterSize,
-                                         kButtonTextColor);
+                                         kButtonTextColor)
+                                         );
 
-    Button *simulate_button = new Button(kButtonSize,
+    std::unique_ptr<Button> simulate_button(
+                                         new Button(kButtonSize,
                                          kSimulateButtonPosition,
                                          kButtonColor,
                                          kButtonOutlineThickness,
@@ -59,7 +62,8 @@ int main() {
                                          font,
                                          kSimulateButtonString,
                                          kButtonCharacterSize,
-                                         kButtonTextColor);
+                                         kButtonTextColor)
+                                         );
 
     sf::Text mouse_controls_text;
     mouse_controls_text.setFont(font);

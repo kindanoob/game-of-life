@@ -66,7 +66,7 @@ const std::vector<int> kSurviveValues = {2,3};// if alive cell has number of nei
 //---B23/S36 - HighLife
 
 //---https://en.wikipedia.org/wiki/Life-like_cellular_automaton
-//---B5678/S45678 - Sebastian Lague
+//---B5678/S45678 - default
 //---B5678/S345678 - 25...55
 //---B5678/S2345678 - 15...55
 //---B5678/S12345678 - 10...40

@@ -3,9 +3,7 @@
 
 #include <vector>
 #include <SFML/Graphics.hpp>
-
-
-class Node;
+#include "node.h"
 
 class GameMap {
 public:
