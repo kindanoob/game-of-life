@@ -123,11 +123,11 @@ void GameMap::DrawMap(sf::RenderWindow& window, double offset_x, double offset_y
 }
 
 
-int GameMap::Height() {
+int GameMap::Height() const {
     return height_;
 }
 
 
-int GameMap::Width() {
+int GameMap::Width() const {
     return width_;
 }

@@ -30,7 +30,7 @@ public:
     void SetRectShapeSize(sf::Vector2f& rect_shape_size) {
         rect_shape_size_ = rect_shape_size;
     }
-    sf::Text& ButtonText() const {
+    sf::Text ButtonText() const {
         return button_text_;
     }
     void SetButtonText(sf::Text& button_text, const sf::Font& button_font,
