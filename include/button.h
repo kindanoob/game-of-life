@@ -1,5 +1,5 @@
-#ifndef BUTTON_H
-#define BUTTON_H
+#ifndef BUTTON_H_
+#define BUTTON_H_
 
 
 #include <string>
@@ -7,7 +7,7 @@
 
 
 
-class Button{
+class Button {
 public:
     Button(const sf::Vector2f& rect_shape_size,
                const sf::Vector2f& rect_shape_position,
@@ -18,28 +18,28 @@ public:
                const std::string& button_text_string,
                const int text_character_size,
                const sf::Color& text_color);
-    sf::RectangleShape& RectShape(){
+    sf::RectangleShape& RectShape() {
         return rect_shape_;
     }
-    void SetRectShape(sf::RectangleShape& rect_shape){
+    void SetRectShape(sf::RectangleShape& rect_shape) {
         rect_shape_ = rect_shape;
     }
-    sf::Vector2f RectShapeSize(){
+    sf::Vector2f RectShapeSize() const {
         return rect_shape_size_;
     }
-    void SetRectShapeSize(sf::Vector2f& rect_shape_size){
+    void SetRectShapeSize(sf::Vector2f& rect_shape_size) {
         rect_shape_size_ = rect_shape_size;
     }
-    sf::Text& ButtonText(){
+    sf::Text& ButtonText() const {
         return button_text_;
     }
     void SetButtonText(sf::Text& button_text, const sf::Font& button_font,
-                         const int button_text_size){
+                         const int button_text_size) {
         button_text_ = button_text;
         button_text_.setFont(button_font);
         button_text_.setCharacterSize(button_text_size);
     }
-    void SetRectShapeFillColor(const sf::Color& color){
+    void SetRectShapeFillColor(const sf::Color& color) {
         RectShape().setFillColor(color);
     }
 private:
@@ -53,4 +53,4 @@ private:
     sf::Color rect_shape_color_;
     sf::Text button_text_;
 };
-#endif // BUTTON_H
+#endif // BUTTON_H_

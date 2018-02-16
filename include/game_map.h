@@ -24,8 +24,8 @@ public:
     int CountNeighborWalls(int row, int col);
     bool IsValidCell(int row, int col);
     void DrawMap(sf::RenderWindow& window, double offset_x, double offset_y);
-    int Width();
-    int Height();
+    int Width() const;
+    int Height() const;
 };
 
 
