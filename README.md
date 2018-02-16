@@ -2,10 +2,10 @@
 C++ implementation of Conway's Game of Life, using SFML
 
 Requirements: 
-    1) C++11, 
+    1) C++14, 
     2) SFML 2.3.2
     
-The program was tested on Ubuntu 16.04 LTS Xenial, gcc 5.4.0.
+The program was tested on Ubuntu 16.04 LTS Xenial, gcc 7.2.0.
 
 Instructions:
 1) For an out-of-place build: create a build directory (mkdir build)
