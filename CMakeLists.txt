@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-project(map_generator)
+project(game_of_life)
 
 file(GLOB_RECURSE SOURCES src/*.cpp include/*.h)
 file(GLOB_RECURSE RESOURCES resources/fonts/*)
@@ -11,7 +11,7 @@ set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_ROOT "path/to/your/SFML/root/folder")
 
 set(SFML_DIR "${SFML_ROOT}/lib/cmake/SFML")
-set(EXECUTABLE_NAME "map_generator")
+set(EXECUTABLE_NAME "game_of_life")
 add_executable(${EXECUTABLE_NAME} ${SOURCES} ${RESOURCES})
 
 target_compile_options(${EXECUTABLE_NAME} PUBLIC -std=c++14 -O3)
