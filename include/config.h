@@ -4,16 +4,13 @@
 #include <string>
 #include <vector>
 
-
-constexpr int kWindowWidthInPixels = 1200;
-constexpr int kWindowHeightInPixels = 800;
-
-
+constexpr int kWindowWidthInPixels = 1024;
+constexpr int kWindowHeightInPixels = 768;
 
 const std::string kWIndowTitle = "Game of life";
 
-constexpr int kMapWidthInTiles = 200;
-constexpr int kMapHeightInTiles = 200;
+constexpr int kMapWidthInTiles = 100;
+constexpr int kMapHeightInTiles = 100;
 constexpr int kMapWidthInPixels = kWindowHeightInPixels;
 constexpr int kMapHeightInPixels = kWindowHeightInPixels;
 constexpr int kTileWidthInPixels = kMapWidthInPixels / kMapWidthInTiles;
@@ -23,10 +20,11 @@ constexpr int kOffsetY = 1 * (kWindowHeightInPixels - kMapHeightInPixels) / 2;
 constexpr int kMapFillPercentage = 50;
 constexpr int kTurnDelayInMicroseconds = 100000;
 constexpr int kGenerateButtonPressedDelay = 300000;//in microseconds
+constexpr int kFrameRateLimit = 30;// FPS limit
+constexpr int kTextSize = 25;
 
 const sf::Color kExploredSquareColor = sf::Color(155, 255, 155);
 const sf::Color kGenerateButtonDefaultColor = sf::Color(200, 200, 200);
-
 
 //buttons
 constexpr int kButtonWidth = 120;
@@ -38,19 +36,15 @@ const sf::Color kButtonColor = sf::Color(200, 200, 200);
 constexpr int kButtonOutlineThickness = 3;
 const sf::Color kButtonOutlineColor = sf::Color(0, 0, 0);
 
-
 constexpr int kGenerateButtonPositionX = 50;
-constexpr int kGenerateButtonPositionY = 600;
+constexpr int kGenerateButtonPositionY = kWindowHeightInPixels * 4 / 5;
 const sf::Vector2f kGenerateButtonPosition = sf::Vector2f(kGenerateButtonPositionX, kGenerateButtonPositionY);
 const std::string kGenerateButtonString = "generate";
 
-constexpr int kSimulateButtonPositionX = 50;
-constexpr int kSimulateButtonPositionY = 600 + kButtonOutlineThickness + kButtonHeight;
+constexpr int kSimulateButtonPositionX = kGenerateButtonPositionX;
+constexpr int kSimulateButtonPositionY = kGenerateButtonPositionY + kButtonOutlineThickness + kButtonHeight;
 const sf::Vector2f kSimulateButtonPosition = sf::Vector2f(kSimulateButtonPositionX, kSimulateButtonPositionY);
 const std::string kSimulateButtonString = "simulate";
-
-
-
 
 constexpr double kAlpha = 0.46;// determines the initial spawn region, the closer it is to zero the larger the region is
 

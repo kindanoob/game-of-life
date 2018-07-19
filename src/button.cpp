@@ -1,7 +1,5 @@
-#include <iostream>
-
-
 #include "button.h"
+#include <iostream>
 
 
 Button::Button(const sf::Vector2f& rect_shape_size,

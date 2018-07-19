@@ -1,15 +1,14 @@
+#include "game_map.h"
+#include "config.h"
+#include "button.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 
-#include "game_map.h"
-#include "config.h"
-#include "button.h"
-
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(kWindowWidthInPixels, kWindowHeightInPixels), kWIndowTitle);
-    window.setVerticalSyncEnabled(true);
+    window.setFramerateLimit(kFrameRateLimit);
     window.setKeyRepeatEnabled(false);
 
     std::unique_ptr<GameMap> game_map = std::make_unique<GameMap>(kMapWidthInTiles, kMapHeightInTiles,
@@ -19,18 +18,20 @@ int main() {
     sf::Font font;
     if (!font.loadFromFile("resources/fonts/ubuntu.ttf")) {
         std::cout << "Error. Font failed to load." << std::endl;
+        return 1;
     }
 
     sf::RectangleShape controls_rect_shape;
     controls_rect_shape.setSize(sf::Vector2f(125, 100));
     controls_rect_shape.setPosition(sf::Vector2f(150, 10));
-    controls_rect_shape.setFillColor(sf::Color(255, 255, 255));
+    controls_rect_shape.setFillColor(sf::Color::White);
 
     sf::Text keyboard_controls_text;
     keyboard_controls_text.setFont(font);
-    keyboard_controls_text.setCharacterSize(25);
-    keyboard_controls_text.setColor(sf::Color(0, 0, 0));
-    std::string keyboard_controls_string = "Keyboard controls: \n\nG - generate new population\nS - start simulation";
+    keyboard_controls_text.setCharacterSize(kTextSize);
+    keyboard_controls_text.setOutlineColor(sf::Color::Black);
+    keyboard_controls_text.setFillColor(sf::Color::Black);
+    std::string keyboard_controls_string = "Keyboard controls: \nG - generate new population\nS - start simulation";
     keyboard_controls_text.setString(keyboard_controls_string);
     auto keyboard_controls_text_rect = keyboard_controls_text.getGlobalBounds();
     keyboard_controls_text.setOrigin(sf::Vector2f(keyboard_controls_text_rect.width / 2,
@@ -65,8 +66,9 @@ int main() {
 
     sf::Text mouse_controls_text;
     mouse_controls_text.setFont(font);
-    mouse_controls_text.setCharacterSize(25);
-    mouse_controls_text.setColor(sf::Color(0, 0, 0));
+    mouse_controls_text.setCharacterSize(kTextSize);
+    mouse_controls_text.setOutlineColor(sf::Color::Black);
+    mouse_controls_text.setFillColor(sf::Color::Black);
     std::string mouse_controls_string = "Mouse controls:";
     mouse_controls_text.setString(mouse_controls_string);
     mouse_controls_text.setPosition(kGenerateButtonPosition + sf::Vector2f(0, -kButtonHeight));
@@ -118,7 +120,6 @@ int main() {
                 }
             }
         }
-
         if (generate_button_pressed_delay < kGenerateButtonPressedDelay) {
             generate_button_pressed_delay += clock_pressed.getElapsedTime().asMicroseconds();
             generate_button->RectShape().setFillColor(sf::Color::Yellow);
@@ -136,7 +137,6 @@ int main() {
             simulate_button->RectShape().setFillColor(kGenerateButtonDefaultColor);
             simulate_button->ButtonText().setStyle(sf::Text::Regular);
         }
-
         if (start_simulation) {
             dt += clock.getElapsedTime().asMicroseconds();
             clock.restart();
@@ -146,7 +146,7 @@ int main() {
             dt = 0;
             game_map->UpdateMap();
         }
-        window.clear(sf::Color(255, 255, 255));
+        window.clear(sf::Color::White);
         game_map->DrawMap(window, kOffsetX, kOffsetY);
         window.draw(keyboard_controls_text);
         window.draw(mouse_controls_text);

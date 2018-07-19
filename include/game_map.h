@@ -1,9 +1,9 @@
 #ifndef GAME_MAP_H_
 #define GAME_MAP_H_
 
+#include "node.h"
 #include <vector>
 #include <SFML/Graphics.hpp>
-#include "node.h"
 
 class GameMap {
 public:

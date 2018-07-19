@@ -1,11 +1,8 @@
 #ifndef BUTTON_H_
 #define BUTTON_H_
 
-
 #include <string>
 #include <SFML/Graphics.hpp>
-
-
 
 class Button {
 public:

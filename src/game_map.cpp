@@ -1,9 +1,9 @@
-#include <vector>
-#include <iostream>
 #include "game_map.h"
 #include "rng.h"
 #include "config.h"
-#include  "node.h"
+#include "node.h"
+#include <vector>
+#include <iostream>
 
 
 GameMap::GameMap(int width, int height, int map_fill_percentage,
@@ -80,14 +80,12 @@ void GameMap::UpdateMap() {
             Node curr = char_map_[row][col];
             int cnt = CountNeighborWalls(row, col);
             if (curr.data_ == '0') {//if the cell is dead
-                if (std::find(begin(kBirthValues), end(kBirthValues), cnt) !=
-                   end(kBirthValues)) {
+                if (std::find(begin(kBirthValues), end(kBirthValues), cnt) != end(kBirthValues)) {
                     map_copy[row][col].data_ = '1';
                     char_map_[row][col].visited_ = true;
                 }
             } else {//if the cell is alive
-                if (std::find(begin(kSurviveValues), end(kSurviveValues), cnt) ==
-                        end(kSurviveValues)) {
+                if (std::find(begin(kSurviveValues), end(kSurviveValues), cnt) == end(kSurviveValues)) {
                     map_copy[row][col].data_ = '0';
                 }
             }
@@ -109,12 +107,12 @@ void GameMap::DrawMap(sf::RenderWindow& window, double offset_x, double offset_y
             rect.setSize(sf::Vector2f(tile_width_in_pixels_, tile_height_in_pixels_));
             rect.setPosition(sf::Vector2f(offset_x + col * tile_width_in_pixels_, offset_y + row * tile_height_in_pixels_));
             if (curr.data_ == '1') {
-                rect.setFillColor(sf::Color(0, 0, 0));
+                rect.setFillColor(sf::Color::Black);
             } else {
                 if (curr.visited_) {
                     rect.setFillColor(kExploredSquareColor);
                 } else {
-                    rect.setFillColor(sf::Color(255, 255, 255));
+                    rect.setFillColor(sf::Color::White);
                 }
             }
             window.draw(rect);
